@@ -17,6 +17,12 @@ defmodule Brouteolli.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+
+    scope "/auth" do
+      get "/login", AuthController, :index
+      get "/logout", AuthController, :delete
+      get "/callback", AuthController, :callback
+    end
   end
 
   # Other scopes may use custom stacks.

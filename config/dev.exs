@@ -8,6 +8,12 @@ use Mix.Config
 # with brunch.io to recompile .js and .css sources.
 config :brouteolli, Brouteolli.Endpoint,
   http: [port: 4000],
+  https: [
+    port: 4443,
+    otp_app: :brouteolli,
+    keyfile: "priv/keys/localhost.key",
+    certfile: "priv/keys/localhost.cert",
+  ],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -41,3 +47,5 @@ config :brouteolli, Brouteolli.Repo,
   database: "brouteolli_dev",
   hostname: "localhost",
   pool_size: 10
+
+import_config "dev.secret.exs"
