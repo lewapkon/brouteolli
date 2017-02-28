@@ -37,7 +37,7 @@ defmodule Brouteolli.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:strava, "~> 0.3.2"},
+     {:strava, "~> 0.3.3"},
      {:poison, "~> 3.1", override: true},
     ]
   end
