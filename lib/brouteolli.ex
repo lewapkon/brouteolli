@@ -1,6 +1,8 @@
 defmodule Brouteolli do
   use Application
 
+  alias Brouteolli.Endpoint
+
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
@@ -25,7 +27,7 @@ defmodule Brouteolli do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    Brouteolli.Endpoint.config_change(changed, removed)
+    Endpoint.config_change(changed, removed)
     :ok
   end
 end

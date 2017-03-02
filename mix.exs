@@ -39,6 +39,7 @@ defmodule Brouteolli.Mixfile do
      {:cowboy, "~> 1.0"},
      {:strava, "~> 0.3.3"},
      {:poison, "~> 3.1", override: true},
+     {:credo, "~> 0.5", only: [:dev, :test]},
     ]
   end
 

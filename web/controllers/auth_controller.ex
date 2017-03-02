@@ -1,6 +1,8 @@
 defmodule Brouteolli.AuthController do
   use Brouteolli.Web, :controller
 
+  alias Brouteolli.Athlete
+
   @strava_auth Application.get_env(:brouteolli, :strava_auth)
   @scope "view_private"
 
@@ -27,14 +29,15 @@ defmodule Brouteolli.AuthController do
 
     conn
     |> put_session(:access_token, client.token.access_token)
-    |> put_flash(:info, "Welcome #{Brouteolli.Athlete.full_name(athlete)}")
+    |> put_flash(:info, "Welcome #{Athlete.full_name(athlete)}")
     |> redirect(to: "/")
   end
 
+  @lint {Credo.Check.Refactor.PipeChainStart, false}
   defp process_athlete(strava_athlete) do
-    case Repo.get_by(Brouteolli.Athlete, sid: strava_athlete.id) do
-      nil -> Brouteolli.Athlete.changeset_from_strava(%Brouteolli.Athlete{}, strava_athlete)
-      athlete -> Brouteolli.Athlete.changeset_from_strava(athlete, strava_athlete)
+    case Repo.get_by(Athlete, sid: strava_athlete.id) do
+      nil -> Athlete.changeset_from_strava(%Athlete{}, strava_athlete)
+      athlete -> Athlete.changeset_from_strava(athlete, strava_athlete)
     end
     |> Repo.insert_or_update!
   end
