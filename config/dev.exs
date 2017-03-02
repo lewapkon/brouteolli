@@ -49,3 +49,5 @@ config :brouteolli, Brouteolli.Repo,
   pool_size: 10
 
 import_config "dev.secret.exs"
+
+config :brouteolli, :strava_auth, Strava.Auth

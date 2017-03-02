@@ -17,3 +17,5 @@ config :brouteolli, Brouteolli.Repo,
   database: "brouteolli_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :brouteolli, :strava_auth, Brouteolli.StravaAuthInMemory
